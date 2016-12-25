@@ -20,14 +20,12 @@ public class ClassDaoImpl implements ClassDao {
     Connection conn = ConnectionUtil.getConnection();
     @Override
     public ArrayList<StudentInClass> getListClass(String username) {
-        String sql = "select x.name as studentname, y.name  as teachername, class.name as classname\n" +
-"                from account, member as x, member as y, studentinclass, class\n" +
+        String sql = "select class.id_class, member.name  as teachername, class.name as classname\n" +
+"                from account, member, studentinclass, class\n" +
 "                where account.username = ?" +
 "                and studentinclass.id_student = account.id\n" +
-"                and studentinclass.id_student = x.id\n" +
-"                and studentinclass.id_class = class.id_class\n" +
-"                and class.id_teacher = y.id";
-                
+"                and class.id_teacher = member.id\n" +
+"                and studentinclass.id_class = class.id_class";
                 
         String id = "";
         ArrayList<StudentInClass> listClass = new ArrayList<StudentInClass>();
@@ -36,13 +34,12 @@ public class ClassDaoImpl implements ClassDao {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, username);
             ResultSet res = pstm.executeQuery();
-            System.out.println(res);
             while(res.next()){
-                String studentname = res.getString("studentname");
+                String classid = res.getString("id_class");
                 String teachername = res.getString("teachername");
                 String classname = res.getString("classname");
-                System.out.println(studentname);
-                listClass.add(new StudentInClass(studentname, classname, teachername));
+                System.out.println(classid);
+                listClass.add(new StudentInClass(classid, classname, teachername));
             }
         } catch (Exception e) {
             System.out.println(e);

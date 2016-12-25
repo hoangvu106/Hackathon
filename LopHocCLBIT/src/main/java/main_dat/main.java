@@ -24,7 +24,9 @@ public class main {
         ClassDaoImpl c = new ClassDaoImpl();
         ArrayList<StudentInClass> list = c.getListClass("nguyenvana");
         for(StudentInClass s: list){
+            System.out.println(s.getId_class());
             System.out.println(s.getClassname());
+            System.out.println(s.getTeachername());
         }
     }
 }
