@@ -30,7 +30,7 @@ public class MemberDAOImpl implements MemberDAO{
         String grade = "";
         String sql = "select member.* from member, account"
                 + "where account.id = member.id"
-                + "and account.username = " + username;        
+                + "and account.username = ?";        
         try {
             Statement stm = conn.prepareStatement(sql);
             ResultSet res = stm.getResultSet();

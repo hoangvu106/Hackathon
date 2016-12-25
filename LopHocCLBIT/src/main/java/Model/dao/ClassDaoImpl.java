@@ -20,32 +20,32 @@ public class ClassDaoImpl implements ClassDao {
     Connection conn = ConnectionUtil.getConnection();
     @Override
     public ArrayList<StudentInClass> getListClass(String username) {
-        String sql = "select x.name as studentname, y.name  as teachername, clas.name as nameclass "
-                + "from account, member as x, member as y, studentinclass, clas"
-                + "where account.username = ?"
-                + "and studentinclass.id_student = account.id "
-                + "and studentinclass.id_student = x.id"
-                + "and studentinclass.id_class = clas.id_class"
-                + "and clas.id_teacher = y.id";
+        String sql = "select x.name as studentname, y.name  as teachername, class.name as classname\n" +
+"                from account, member as x, member as y, studentinclass, class\n" +
+"                where account.username = ?" +
+"                and studentinclass.id_student = account.id\n" +
+"                and studentinclass.id_student = x.id\n" +
+"                and studentinclass.id_class = class.id_class\n" +
+"                and class.id_teacher = y.id";
                 
                 
         String id = "";
         ArrayList<StudentInClass> listClass = new ArrayList<StudentInClass>();
         
-        
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, username);
-            ResultSet res = pstm.getResultSet();
+            ResultSet res = pstm.executeQuery();
+            System.out.println(res);
             while(res.next()){
-                String studentname = res.getString("studentnam");
+                String studentname = res.getString("studentname");
                 String teachername = res.getString("teachername");
                 String classname = res.getString("classname");
+                System.out.println(studentname);
                 listClass.add(new StudentInClass(studentname, classname, teachername));
             }
-
-            pstm.execute();
         } catch (Exception e) {
+            System.out.println(e);
         }
         
         

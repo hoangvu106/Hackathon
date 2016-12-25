@@ -6,15 +6,25 @@
 
 package main_dat;
 
+import Model.beans.StudentInClass;
+import Model.dao.ClassDao;
+import Model.dao.ClassDaoImpl;
 import Model.dao.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
  * @author DatNguyen
  */
 public class main {
-    
+    public static void main(String[] args) {
+        ClassDaoImpl c = new ClassDaoImpl();
+        ArrayList<StudentInClass> list = c.getListClass("nguyenvana");
+        for(StudentInClass s: list){
+            System.out.println(s.getClassname());
+        }
+    }
 }

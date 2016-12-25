@@ -19,7 +19,7 @@ public class Clas {
     private String id_teacher;
     private String teachername;
     private String location;
-
+    
     public String getId_class() {
         return id_class;
     }
