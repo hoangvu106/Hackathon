@@ -18,10 +18,10 @@ public class StudentInClass {
     private String teachername;
     private String id_teacher;
 
-    public StudentInClass(String id_class, String classname, String id_teacher) {
+    public StudentInClass(String id_class, String classname, String teachername) {
         this.id_class = id_class;
         this.classname = classname;
-        this.id_teacher = id_teacher;
+        this.teachername = teachername;
     }
 
    

@@ -38,7 +38,6 @@ public class ClassDaoImpl implements ClassDao {
                 String classid = res.getString("id_class");
                 String teachername = res.getString("teachername");
                 String classname = res.getString("classname");
-                System.out.println(classid);
                 listClass.add(new StudentInClass(classid, classname, teachername));
             }
         } catch (Exception e) {

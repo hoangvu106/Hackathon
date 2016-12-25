@@ -10,6 +10,8 @@ import Model.beans.StudentInClass;
 import Model.dao.ClassDao;
 import Model.dao.ClassDaoImpl;
 import Model.dao.ConnectionUtil;
+import Model.dao.MemberDAO;
+import Model.dao.MemberDAOImpl;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -28,5 +30,7 @@ public class main {
             System.out.println(s.getClassname());
             System.out.println(s.getTeachername());
         }
+        MemberDAOImpl m = new MemberDAOImpl();
+        
     }
 }
