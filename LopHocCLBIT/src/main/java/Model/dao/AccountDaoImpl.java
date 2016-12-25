@@ -29,7 +29,7 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
-    public boolean checkLogin(String account, String password) {
+    public boolean checkLogin(String username, String password) {
         
         String s1 = "select * from account";
         try{
@@ -38,7 +38,7 @@ public class AccountDaoImpl implements AccountDao {
             while(rs.next()){
                 String name = rs.getString("username");
                 String pass = rs.getString("password");
-                if(name.equals(account) && pass.equals(password)){
+                if(name.equals(username) && pass.equals(password)){
                     return true;
                 }
             }
