@@ -35,6 +35,7 @@ public class ClassDaoImpl implements ClassDao {
         
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, username);
             ResultSet res = pstm.getResultSet();
             while(res.next()){
                 String studentname = res.getString("studentnam");

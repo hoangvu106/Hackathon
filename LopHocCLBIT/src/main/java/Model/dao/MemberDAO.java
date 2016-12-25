@@ -6,10 +6,15 @@
 
 package Model.dao;
 
+import Model.beans.Member;
+import model.beans.Account;
+
 /**
  *
  * @author DatNguyen
  */
 public interface MemberDAO {
+    Member getInfo(String username);
+    
     
 }

@@ -15,4 +15,5 @@ import java.util.ArrayList;
  */
 public interface ClassDao {
     ArrayList<StudentInClass> getListClass(String username);
+    
 }
