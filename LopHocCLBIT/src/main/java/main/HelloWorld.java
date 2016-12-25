@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package main;
 
 import Model.beans.Member;
@@ -14,10 +15,13 @@ import Model.dao.ClassDaoImpl;
 import Model.dao.MemberDAOImpl;
 import java.util.ArrayList;
 import model.beans.Account;
-import static spark.Spark.*;
+import static spark.Spark.post;
 
-public class HelloWorld {
-
+/**
+ *
+ * @author DatNguyen
+ */
+public class helloworld {
     public static void main(String[] args) {
         post("/login", (request, response) -> {
             String username = request.queryParams("username");
@@ -64,7 +68,7 @@ public class HelloWorld {
             System.out.println(username );
             System.out.println( mem.getId()+" "+mem.getName()+" "+mem.getGrade());
             String s ="";
-            s+=String.format("{\"id\": %s,\"name\": %s,\"grade\": %s }", mem.getId(),mem.getName(),mem.getGrade());
+            s+=String.format("{\"id\": \"%s\",\"name\": \"%s\",\"grade\": \"%s\" }", mem.getId(),mem.getName(),mem.getGrade());
             System.out.println(s);
                 return s;
         });
