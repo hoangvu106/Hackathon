@@ -17,6 +17,7 @@ public class Clas {
     }
     private String name;
     private String id_teacher;
+    private String teachername;
     private String location;
 
     public String getId_class() {

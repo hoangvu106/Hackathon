@@ -6,10 +6,13 @@
 
 package Model.dao;
 
+import Model.beans.StudentInClass;
+import java.util.ArrayList;
+
 /**
  *
  * @author DatNguyen
  */
 public interface ClassDao {
-    String[] getListClass();
+    ArrayList<StudentInClass> getListClass(String username);
 }
