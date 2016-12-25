@@ -34,7 +34,7 @@ public class HelloWorld {
         post("/get-list-class", (request, response) -> {
 
             String username = request.queryParams("username");
-            StringBuffer json = new StringBuffer();
+            //StringBuffer json = new StringBuffer();
             response.type("application/json");
             ClassDao c = new ClassDaoImpl();
             ArrayList<StudentInClass> arrayList = new ArrayList<>();
@@ -48,7 +48,7 @@ public class HelloWorld {
                 
             } 
             for(int i=0;i<arrayList.size();i++){
-                result+=String.format("{\"id_class\": %s ,\"name_class\": %s ,\"name_techer\": %s}", arrayList.get(i).getId_class(),arrayList.get(i).getClassname(),arrayList.get(i).getTeachername());
+                result+=String.format("{\"id_class\": \"%s\" ,\"name_class\": \"%s\" ,\"name_techer\": \"%s\"}", arrayList.get(i).getId_class(),arrayList.get(i).getClassname(),arrayList.get(i).getTeachername());
                 if(i<arrayList.size()-1) result+=",";
             }   
             result+="]";
