@@ -15,6 +15,10 @@ public class Account {
     private String userName;
     private String passWord;
 
+    public String getId() {
+        return id;
+    }
+
     public String getUserName() {
         return userName;
     }

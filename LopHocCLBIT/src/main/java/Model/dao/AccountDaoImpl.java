@@ -36,8 +36,8 @@ public class AccountDaoImpl implements AccountDao {
             Statement stm = conn.createStatement();
             ResultSet rs =  stm.executeQuery(s1);
             while(rs.next()){
-                String name = rs.getString("name");
-                String pass = rs.getString("pass");
+                String name = rs.getString("username");
+                String pass = rs.getString("password");
                 if(name.equals(account) && pass.equals(password)){
                     return true;
                 }
@@ -75,9 +75,9 @@ public class AccountDaoImpl implements AccountDao {
         String sql = "UPDATE account SET username = ?, password = ? WHERE id = ?";
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(2, account.getUserName());
-            pstm.setString(3, account.getPassWord());
-            pstm.setString(4, account.getId());
+            pstm.setString(1, account.getUserName());
+            pstm.setString(2, account.getPassWord());
+            pstm.setString(3, account.getId());
 
             pstm.executeUpdate();
 
@@ -94,6 +94,24 @@ public class AccountDaoImpl implements AccountDao {
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, account.getId());
+
+            pstm.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean insertAccount(Account user) {
+        String sql = "INSERT INTO user(id, username, password) VALUES (?, ?, ?)";
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, user.getId());
+            pstm.setString(2, user.getUserName());
+            pstm.setString(3, user.getPassWord());
 
             pstm.executeUpdate();
 

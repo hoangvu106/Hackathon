@@ -15,10 +15,11 @@ public class HelloWorld {
     public static void main(String[] args) {
         post("/login", (request, response) -> {
 
-            String username = request.queryParams("account");
+            String username = request.queryParams("username");
             String password = request.queryParams("password");
             Account account = new Account(username, password);
             response.type("application/json");
+            System.out.println(username + " " + password);
             AccountDao m = new AccountDaoImpl();
             if (m.checkLogin(username, password)) {
                 return "{\"code\":1}";
